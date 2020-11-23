@@ -1,5 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: true }))
 
 app.listen(3000, function(){
     console.log('Listening on 3000');
@@ -10,6 +13,6 @@ app.get('/', (req, res) => {
   })
 
 app.post('/quotes', (req, res) => {
-    console.log('Heloooooo World 4!!!!')
+    console.log(req.body);
 })
 console.log('May the Node be with You');
