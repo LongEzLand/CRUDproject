@@ -4,12 +4,11 @@ const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const connectionString = 'mongodb+srv://Yoda:WIJTw18H7forYhdQ@cluster0.ruwzh.mongodb.net/yodaBase?retryWrites=true&w=majority'
 
-MongoClient.connect(connectionString, {
-    useUnifiedTopology:true
-}, (err, client) => {
-    if (err) return console.error(err);
-  console.log('Connected to Database');
-})
+MongoClient.connect(connectionString, { useUnifiedTopology: true })
+  .then(client => {
+    console.log('Connected to Database')
+  })
+  .catch(error => console.error(error))
 
 app.use(bodyParser.urlencoded({extended: true }))
 
