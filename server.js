@@ -7,6 +7,7 @@ const connectionString = 'mongodb+srv://Yoda:WIJTw18H7forYhdQ@cluster0.ruwzh.mon
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
+    const db = client.db('star-wars-quotes')
   })
   .catch(error => console.error(error))
 
