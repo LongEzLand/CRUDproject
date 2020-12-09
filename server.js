@@ -26,8 +26,12 @@ app.post('/quotes', (req, res) => {
 app.listen(3000, function(){
     console.log('Listening on 3000');
 })
-
 console.log('May the Node be with You');
+console.log(quotesCollection.find({},{ projection: { _id: 0, name: 1, quote: 1 } }).toArray(function(err, result){
+  if (err) throw err;
+  console.log(result);
+  
+}));
     
   })
   .catch(error => console.error(error))
