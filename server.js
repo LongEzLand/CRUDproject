@@ -12,6 +12,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const quotesCollection = db.collection('quotes');
     app.use(bodyParser.urlencoded({extended: true }))
     app.use(express.static('public'))
+    app.use(bodyParser.json())
+
 app.set('view engine', 'ejs')    
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray().then(results => {
@@ -20,7 +22,9 @@ app.get('/', (req, res) => {
   .catch(error => console.error(error))
   
 })
-
+app.put('/quotes', (req, res) => {
+  console.log(req.body)
+})
 app.post('/quotes', (req, res) => {
   quotesCollection.insertOne(req.body)
     .then(result => {
