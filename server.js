@@ -15,10 +15,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 app.set('view engine', 'ejs')    
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray().then(results => {
-    console.log(results)
+    res.render('index.ejs', { quotes: results })
   })
   .catch(error => console.error(error))
-  res.sendFile(__dirname + '/index.html')
+  
 })
 
 app.post('/quotes', (req, res) => {
