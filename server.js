@@ -11,7 +11,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const db = client.db('star-wars-quotes');
     const quotesCollection = db.collection('quotes');
     app.use(bodyParser.urlencoded({extended: true }))
-
+    app.use(express.static('public'))
 app.set('view engine', 'ejs')    
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray().then(results => {
