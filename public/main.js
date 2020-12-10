@@ -8,5 +8,10 @@ update.addEventListener('click', _ => {
             name: 'Darth Vadar',
             quote: 'I find your lack of faith disturbing.'
           })
-    })
+    }).then(res => {
+        if (res.ok) return res.json()
+      })
+      .then(response => {
+        console.log(response)
+      })
   })
