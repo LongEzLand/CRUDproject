@@ -40,6 +40,17 @@ app.put('/quotes', (req, res) => {
      })
     .catch(error => console.error(error))
 })
+
+app.delete('/quotes', (req, res) => {
+  quotesCollection.deleteOne(
+    { name: req.body.name }
+  )
+    .then(result => {
+      res.json(`Deleted Darth Vadar's quote`)
+    })
+    .catch(error => console.error(error))
+})
+
 app.post('/quotes', (req, res) => {
   quotesCollection.insertOne(req.body)
     .then(result => {
